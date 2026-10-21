@@ -69,7 +69,7 @@ function bindContent() {
         <button class="card" type="button" data-case="${i}" data-type="${p.type || ''}" data-cursor="Открыть">
           <div class="card-media">
             <span class="card-num">№${pad(i + 1)}</span>
-            <span class="card-shots">${(p.gallery || []).length || 1} кадр.</span>
+            <span class="card-shots">${p.model ? '3D · ' : ''}${(p.gallery || []).length || 1} кадр.</span>
             <img src="${p.cover}" alt="${p.title}" loading="lazy" />
           </div>
           <div class="card-meta">
@@ -734,6 +734,18 @@ function initFilter() {
   )
 }
 
+// шапка карточки: 3D-модель (поверх обложки, пока грузится) → видео → обложка
+function caseHero(p) {
+  if (p.model) return `<div class="case-hero has-model"><img src="${p.cover}" alt="${p.title}" /><span class="case-model-hint">3D · потяни, чтобы повернуть</span></div>`
+  return `<div class="case-hero ${p.video ? 'has-video' : ''}">${p.video ? embed(p.video) : `<img src="${p.cover}" alt="${p.title}" />`}</div>`
+}
+
+let model = null
+function dropModel() {
+  model?.destroy()
+  model = null
+}
+
 let modalOpen = false
 function initModal() {
   const modal = $('#case')
@@ -747,8 +759,9 @@ function initModal() {
     const n = site.projects.length
     const prev = site.projects[(i - 1 + n) % n]
     const next = site.projects[(i + 1) % n]
+    dropModel()
     content.innerHTML = `
-      <div class="case-hero ${p.video ? 'has-video' : ''}">${p.video ? embed(p.video) : `<img src="${p.cover}" alt="${p.title}" />`}</div>
+      ${caseHero(p)}
       <div class="case-inner">
         <p class="case-num">Проект №${pad(i + 1)} / ${pad(n)}</p>
         <h2 class="case-title" id="case-title">${p.title}</h2>
@@ -768,6 +781,13 @@ function initModal() {
           <button type="button" data-go="${(i + 1) % n}">Следующее →<strong>${next.title}</strong></button>
         </nav>
       </div>`
+    if (p.model) {
+      const host = $('.case-hero', content)
+      import('./model-viewer.js').then(({ ModelViewer }) => {
+        // пока грузился модуль, карточку могли пролистать или закрыть
+        if (current === i && host.isConnected) model = new ModelViewer(host, p.model)
+      })
+    }
     body.scrollTop = 0
     gsap.from(content.children, { opacity: 0, y: 30, duration: 0.7, stagger: 0.08, ease: 'power3.out' })
   }
@@ -794,6 +814,7 @@ function initModal() {
       onComplete: () => {
         modal.classList.remove('is-open')
         modal.setAttribute('aria-hidden', 'true')
+        dropModel()
         content.innerHTML = ''
         lenis.start()
       },

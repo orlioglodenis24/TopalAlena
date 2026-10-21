@@ -63,7 +63,8 @@ export const site = {
   // ── Работы ─────────────────────────────────────────────────
   // type — для фильтра над сеткой (одинаковые значения объединяются в одну кнопку),
   // cover — превью (16:10 или 3:2), gallery — кадры в карточке (картинки или .mp4),
-  // video — ссылка на YouTube/Vimeo или mp4 (можно оставить пустым)
+  // video — ссылка на YouTube/Vimeo или mp4 (можно оставить пустым),
+  // model — 3D-модель .glb из /public/models (крутится в шапке карточки)
   projects: [
     {
       id: 'ward-13',
@@ -126,18 +127,19 @@ export const site = {
       link: '',
     },
     {
-      id: 'she',
-      title: 'Она',
-      type: '3D-окружение',
-      category: 'Персонаж · Blender',
-      year: '2025',
-      tools: ['Blender', 'Substance Painter'],
-      cover: '/img/works/w5.jpg',
-      gallery: ['/img/works/w5.jpg', '/img/works/w2.jpg'],
+      id: 'headbaby',
+      title: 'Под замком',
+      type: '3D-персонажи',
+      category: 'Персонаж · Cinema 4D',
+      year: '2026',
+      tools: ['Cinema 4D', 'Blender'],
+      cover: '/img/works/headbaby-cover.jpg',
+      gallery: ['/img/works/headbaby-front.jpg', '/img/works/headbaby-side.jpg'],
+      model: '/models/headbaby.glb', // 3D-модель в шапке карточки (.glb), можно оставить пустым
       video: '',
-      role: 'Концепт и 3D персонажа',
+      role: 'Концепт, моделинг, лукдев',
       description:
-        'ЗАГЛУШКА. Дизайн и рендер персонажа для инди-игры. Моделинг, текстуры, свет и постер.',
+        'Голова куклы-младенца, превращённая в навесной замок: дужка на макушке, замочная скважина во лбу, демонические рога, пирсинг и соска-оскал вместо улыбки. Модель можно покрутить прямо в шапке карточки.',
       link: '',
     },
     {

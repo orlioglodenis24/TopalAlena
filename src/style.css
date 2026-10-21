@@ -1900,6 +1900,36 @@ main {
 .case-hero.has-video::after {
   display: none;
 }
+/* 3D-модель: обложка видна, пока грузится, потом её перекрывает canvas */
+.case-hero.has-model {
+  background: radial-gradient(ellipse at 50% 40%, var(--bg-3), var(--bg-2) 70%);
+}
+.case-hero.has-model img {
+  transition: opacity 0.8s;
+}
+.case-hero.has-model.is-loaded img {
+  opacity: 0;
+}
+.case-model {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.case-hero.has-model::after {
+  z-index: 1;
+}
+.case-model-hint {
+  position: absolute;
+  left: var(--pad);
+  bottom: 20px;
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  pointer-events: none;
+}
 .case-inner {
   padding: clamp(24px, 4vw, 56px) var(--pad) clamp(60px, 8vw, 100px);
 }
