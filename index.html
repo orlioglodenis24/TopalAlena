@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Topal Alena — 3D Generalist &amp; Motion Designer</title>
+    <meta name="description" content="Портфолио Topal Alena: 3D-окружение и локации, клипы и моушен на любую тематику, интеграции логотипов в 3D-сцены. Blender, Cinema 4D, Unreal Engine 5, After Effects, DaVinci Resolve." />
+    <meta name="theme-color" content="#040916" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Topal Alena — 3D Generalist &amp; Motion Designer" />
+    <meta property="og:description" content="3D-локации, клипы и моушен на любую тематику, интеграции логотипов в 3D." />
+    <meta property="og:image" content="/img/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="is-loading">
+    <!-- ═══════════ LOADER (рендер) ═══════════ -->
+    <section id="loader" aria-hidden="true">
+      <canvas class="loader-noise"></canvas>
+      <div class="loader-screen">
+        <div class="vhs vhs-tl">RENDER ▶</div>
+        <div class="vhs vhs-tr">CYCLES · 4096 SPP</div>
+        <div class="loader-perc"><span class="loader-num">000</span><span class="loader-unit">%</span></div>
+        <div class="loader-msg">Рендер сцены…</div>
+        <div class="vhs vhs-bl">TIME&nbsp;&nbsp;<span class="loader-time">00:00:00</span></div>
+        <div class="vhs vhs-br">GPU ▮▮▮▯▯</div>
+        <div class="loader-roll"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════ ГЛОБАЛЬНЫЕ ОВЕРЛЕИ ═══════════ -->
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="fx-grain" aria-hidden="true"></div>
+    <div class="fx-vignette" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true"><div class="cursor-dot"></div><div class="cursor-ring"><span class="cursor-label"></span></div></div>
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header class="header">
+      <a href="#top" class="logo" data-scroll-to aria-label="Наверх">
+        <span class="logo-name" data-letters data-c="firstName">Topal Alena</span>
+        <span class="logo-sub" data-c="roleShort">3D generalist · motion designer</span>
+      </a>
+      <div class="header-right">
+        <button class="sound-btn" type="button" aria-pressed="false"><span class="sound-bars"><i></i><i></i><i></i><i></i></span><span class="sound-label">Звук: выкл</span></button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-btn-text">[ Меню ]</span></button>
+      </div>
+    </header>
+
+    <!-- ═══════════ MENU ═══════════ -->
+    <section id="menu" aria-hidden="true">
+      <div class="menu-inner" data-lenis-prevent>
+        <nav class="menu-nav" aria-label="Разделы">
+          <p class="menu-label">Разделы</p>
+          <a href="#top" data-scroll-to class="menu-link"><span class="sel">&gt;&gt;&gt;</span>Главная<em>Вы здесь</em></a>
+          <a href="#about" data-scroll-to class="menu-link"><span class="sel">&gt;&gt;&gt;</span>Обо мне<em></em></a>
+          <a href="#works" data-scroll-to class="menu-link"><span class="sel">&gt;&gt;&gt;</span>Работы<em></em></a>
+          <a href="#services" data-scroll-to class="menu-link"><span class="sel">&gt;&gt;&gt;</span>Направления<em></em></a>
+          <a href="#reel" data-scroll-to class="menu-link"><span class="sel">&gt;&gt;&gt;</span>Шоурил<em></em></a>
+          <a href="#contact" data-scroll-to class="menu-link"><span class="sel">&gt;&gt;&gt;</span>Контакты<em></em></a>
+        </nav>
+
+        <div class="menu-info">
+          <p class="menu-info-tab">Связь</p>
+          <div class="menu-panel">
+            <p class="panel-title">Как выйти на связь</p>
+            <div class="panel-rows">
+              <p>Почта<br /><a data-href="mailto:email" data-c="email">alena.mnlv@gmail.com</a></p>
+              <p>Telegram<br /><a data-href="telegram.url" data-c="telegram.label" target="_blank" rel="noopener">@freeid2</a></p>
+              <p>Instagram<br /><a data-href="instagram.url" data-c="instagram.label" target="_blank" rel="noopener">@alll.eena</a></p>
+              <p class="panel-note">Отвечаю в течение суток. Работаю удалённо — с проектами из любой страны.</p>
+            </div>
+            <div class="sphere" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+
+        <div class="menu-foot">
+          <p><span class="dot-live"></span><span data-c="status">Открыта для новых проектов</span></p>
+          <ul class="menu-deco"><li></li><li></li><li></li><li></li></ul>
+        </div>
+      </div>
+    </section>
+
+    <main id="top">
+      <!-- ═══════════ HERO ═══════════ -->
+      <section id="hero" class="hero">
+        <div class="viewfinder" aria-hidden="true">
+          <i class="vf-c vf-tl"></i><i class="vf-c vf-tr"></i><i class="vf-c vf-bl"></i><i class="vf-c vf-br"></i>
+          <div class="vf-row vf-top">
+            <span><span class="rec-dot"></span> LIVE <span class="timecode">00:00:00:00</span></span>
+            <span>CAM 01 · <span class="frame-count">46/279</span></span>
+          </div>
+          <div class="vf-row vf-bottom">
+            <span>35 MM · F2.8 · 24 FPS</span>
+            <span class="battery"><i></i><i></i><i></i></span>
+          </div>
+          <span class="vf-cross"></span>
+        </div>
+
+        <div class="hero-content">
+          <p class="hero-kicker"><span class="line"></span><span data-c="roleLong">3D Generalist · Motion Designer · 3D Visual Storyteller · Visual Production</span></p>
+          <h1 class="hero-title">
+            <span class="hero-name glitch" data-text="TOPAL ALENA" data-c="firstName">Topal Alena</span>
+          </h1>
+          <p class="hero-sub"><span class="serif">реализую идеи,</span> <span class="serif">которые вы ещё</span> <span class="serif accent">не успели представить</span></p>
+        </div>
+
+        <div class="hero-scroll">
+          <span>Листай вниз</span>
+          <span class="hero-scroll-sub">в кадр</span>
+          <i class="hero-scroll-line"></i>
+        </div>
+      </section>
+
+      <!-- ═══════════ INTRO / МАНИФЕСТ ═══════════ -->
+      <section id="intro" class="section intro">
+        <p class="section-tag"><span>[01]</span> Я занимаюсь</p>
+        <h2 class="manifesto" data-words>Создаю виртуальные пространства и&nbsp;превращаю любую идею в&nbsp;кадр<span class="accent">.</span></h2>
+        <div class="intro-cols">
+          <div class="intro-col" data-render="about"></div>
+          <div class="intro-col intro-cta">
+            <p class="intro-cta-big serif">Есть идея?<br />Соберём её в 3D.</p>
+            <a href="#works" data-scroll-to class="btn" data-cursor="Работы"><span>Смотреть работы</span></a>
+          </div>
+        </div>
+        <div class="intro-symbols" aria-hidden="true">◯ △ ⌖ □ ◇</div>
+      </section>
+
+      <!-- ═══════════ ABOUT ═══════════ -->
+      <section id="about" class="section about">
+        <p class="section-tag"><span>[02]</span> Обо мне</p>
+        <div class="about-grid">
+          <figure class="about-photo" data-cursor="Свет">
+            <div class="about-photo-frame">
+              <img class="ph-dark" data-src="photo" src="/img/alena.jpg" alt="Фото Topal Alena" />
+              <img class="ph-lit" data-src="photo" src="/img/alena.jpg" alt="" aria-hidden="true" />
+              <div class="ph-ui" aria-hidden="true">
+                <span class="ph-tl"><span class="rec-dot"></span> CAM 01</span>
+                <span class="ph-tr">▲</span>
+                <span class="ph-bl">SUBJECT: <span data-c="latinName">TOPAL ALENA</span></span>
+                <span class="ph-br">KEY LIGHT · 5600K</span>
+              </div>
+            </div>
+            <figcaption>Наведи курсор — это ключевой свет.</figcaption>
+          </figure>
+
+          <div class="about-text">
+            <h2 class="about-title"><span class="reveal-line"><span>Привет. Я —</span></span><span class="reveal-line"><span class="serif accent" data-c="firstName">Topal Alena</span></span></h2>
+            <p class="about-lead" data-c="role">3D Generalist · Motion Designer</p>
+            <dl class="facts" data-render="facts"></dl>
+            <p class="tools-label">Инструменты</p>
+            <ul class="tools" data-render="tools"></ul>
+            <p class="tools-label">Техническая база</p>
+            <ul class="tools tools--skills" data-render="skills"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ SPACE / ПОЛЁТ ═══════════ -->
+      <section id="descent" class="descent">
+        <div class="descent-pin">
+          <div class="descent-text">
+            <h2 class="descent-title"><span class="reveal-line"><span>Дальше —</span></span><span class="reveal-line"><span class="serif">глубже в кадр.</span></span></h2>
+            <div class="descent-box">
+              <p>Пролетим сквозь сцену.</p>
+              <a href="#works" data-scroll-to class="btn btn-ghost" data-cursor="Работы"><span>Сразу к работам</span></a>
+            </div>
+          </div>
+          <div class="descent-meter" aria-hidden="true"><span>КАДР</span><span class="descent-depth">000</span><span>/ 240</span></div>
+        </div>
+      </section>
+
+      <!-- ═══════════ MARQUEE ═══════════ -->
+      <section class="notice">
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>Открыта для проектов ◆ Open for commissions ◆ </span><span>Открыта для проектов ◆ Open for commissions ◆ </span><span>Открыта для проектов ◆ Open for commissions ◆ </span><span>Открыта для проектов ◆ Open for commissions ◆ </span>
+          </div>
+        </div>
+        <div class="notice-body">
+          <p>Нужен клип, 3D-ролик, логотип в 3D-локации или визуал для игры, который запомнят?</p>
+          <a href="#contact" data-scroll-to class="btn btn-dark" data-cursor="Написать"><span>Обсудить проект</span></a>
+        </div>
+      </section>
+
+      <!-- ═══════════ WORKS ═══════════ -->
+      <section id="works" class="section works">
+        <div class="works-head">
+          <div>
+            <p class="section-tag"><span>[03]</span> Избранные работы</p>
+            <h2 class="works-title">Работы<sup class="works-count">06</sup></h2>
+          </div>
+          <div class="works-filter" role="tablist" aria-label="Фильтр работ" data-render="filters"></div>
+        </div>
+        <div class="works-grid" data-render="projects"></div>
+        <div class="works-end">
+          <p class="serif">Здесь — только часть.<br />Полное портфолио — по запросу.</p>
+          <a href="#contact" data-scroll-to class="btn" data-cursor="Написать"><span>Запросить портфолио</span></a>
+        </div>
+      </section>
+
+      <!-- ═══════════ SERVICES ═══════════ -->
+      <section id="services" class="section services">
+        <p class="section-tag"><span>[04]</span> Направления</p>
+        <h2 class="services-title"><span class="reveal-line"><span>Что я могу</span></span><span class="reveal-line"><span class="serif accent">создать</span></span></h2>
+        <div class="stack" data-render="services"></div>
+      </section>
+
+      <!-- ═══════════ SHOWREEL ═══════════ -->
+      <section id="reel" class="reel">
+        <div class="reel-pin">
+          <div class="reel-frame" data-cursor="Смотреть">
+            <img data-src="reel.poster" src="/img/works/w4.jpg" alt="" />
+            <div class="reel-overlay">
+              <p class="reel-top"><span><span class="rec-dot"></span> SHOWREEL</span><span data-c="reel.duration">01:30</span></p>
+              <button class="reel-play" type="button" aria-label="Смотреть шоурил"><span>▶</span></button>
+              <p class="reel-title">Showreel <span class="serif">2026</span></p>
+            </div>
+          </div>
+          <p class="reel-caption">Полторы минуты лучших кадров. Лучше со звуком.</p>
+        </div>
+      </section>
+
+      <!-- ═══════════ PROCESS ═══════════ -->
+      <section class="section process">
+        <p class="section-tag"><span>[05]</span> Как я работаю</p>
+        <ol class="process-list" data-render="process"></ol>
+      </section>
+
+      <!-- ═══════════ CONTACT ═══════════ -->
+      <section id="contact" class="section contact">
+        <p class="section-tag"><span>[06]</span> Связь</p>
+        <h2 class="contact-title">
+          <span class="reveal-line"><span>Есть идея?</span></span>
+          <span class="reveal-line"><span class="serif accent">Напиши.</span></span>
+        </h2>
+        <div class="contact-grid">
+          <div class="contact-main">
+            <p class="contact-lead">Клипы, 3D-локации, интеграции логотипов, моушен и визуал для игр — или что-то, чему ещё нет названия. Расскажи идею, я отвечу в течение суток.</p>
+            <button class="contact-mail" type="button" data-copy data-cursor="Копировать"><span data-c="email">alena.mnlv@gmail.com</span><em>скопировать</em></button>
+            <a class="btn" data-href="telegram.url" target="_blank" rel="noopener" data-cursor="Telegram"><span>Написать в Telegram</span></a>
+          </div>
+          <ul class="social-list social-list--big" data-render="socials"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+      <p class="footer-title">Финальный кадр. Следующий — за тобой.</p>
+      <div class="footer-row">
+        <ul class="footer-links">
+          <li class="title">Соцсети</li>
+          <li data-render="socials-plain"></li>
+        </ul>
+        <ul class="footer-links">
+          <li class="title">Разделы</li>
+          <li><a href="#about" data-scroll-to>Обо мне</a></li>
+          <li><a href="#works" data-scroll-to>Работы</a></li>
+          <li><a href="#services" data-scroll-to>Направления</a></li>
+          <li><a href="#reel" data-scroll-to>Шоурил</a></li>
+          <li><a href="#contact" data-scroll-to>Контакты</a></li>
+        </ul>
+        <div class="footer-info">
+          <p class="info-main" data-c="role">3D Generalist · Motion Designer</p>
+          <p data-c="city">Молдова</p>
+          <p data-c="since">С 2022</p>
+          <p>Местное время: <span class="local-time">--:--</span></p>
+        </div>
+      </div>
+      <div class="footer-big" aria-hidden="true"><span data-c="firstName">Topal Alena</span></div>
+      <div class="footer-copy">
+        <p>© <em class="year">2026</em> <span data-c="firstName">Topal Alena</span></p>
+        <p>Отрендерено с любовью</p>
+      </div>
+    </footer>
+
+    <!-- ═══════════ CASE MODAL ═══════════ -->
+    <div class="modal" id="case" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="case-title">
+      <div class="modal-bg" data-close></div>
+      <article class="modal-body" data-lenis-prevent>
+        <button class="modal-close" type="button" data-close aria-label="Закрыть">[ X ]</button>
+        <div class="modal-content"></div>
+      </article>
+    </div>
+
+    <!-- ═══════════ ПРОСМОТР КАДРОВ ═══════════ -->
+    <div class="viewer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр">
+      <button class="viewer-close" type="button" aria-label="Закрыть">[ X ]</button>
+      <button class="viewer-nav viewer-prev" type="button" aria-label="Предыдущий кадр">←</button>
+      <div class="viewer-stage"></div>
+      <button class="viewer-nav viewer-next" type="button" aria-label="Следующий кадр">→</button>
+      <p class="viewer-count"></p>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
