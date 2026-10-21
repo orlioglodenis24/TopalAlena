@@ -10,7 +10,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import { site } from './content.js'
-import { Space } from './space.js'
+import { Corridor } from './corridor.js'
 import { Ambience } from './audio.js'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -178,12 +178,12 @@ function initScroll() {
 }
 
 // ═══════════════════════════════════════════════════════════
-//  WEBGL SPACE
+//  WEBGL CORRIDOR
 // ═══════════════════════════════════════════════════════════
-let space = null
-function initSpace() {
+let corridor = null
+function initCorridor() {
   try {
-    space = new Space($('#gl'), { mobile: isMobile })
+    corridor = new Corridor($('#gl'), { mobile: isMobile })
   } catch (err) {
     console.warn('WebGL недоступен, включён фолбэк', err)
     document.body.classList.add('no-webgl')
@@ -258,7 +258,7 @@ function runLoader() {
       })
       tl.to('.loader-screen', { duration: 0.12, x: 14, skewX: 12, repeat: 3, yoyo: true, ease: 'steps(1)' })
         .set('.loader-screen', { x: 0, skewX: 0 })
-        .to(loader, { duration: 0.32, scaleY: 0.004, ease: 'power3.in', backgroundColor: '#d8f1fd' }, '+=0.05')
+        .to(loader, { duration: 0.32, scaleY: 0.004, ease: 'power3.in', backgroundColor: '#fff' }, '+=0.05')
         .to(loader, { duration: 0.26, scaleX: 0, ease: 'power3.in' })
     }
     step()
@@ -272,7 +272,7 @@ function heroIntro() {
   const logoChars = splitChars($('.logo-name'))
   const nameChars = splitChars($('.hero-name'), { breakWords: true })
 
-  space?.boot()
+  corridor?.boot()
 
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
   tl.from('.viewfinder', { opacity: 0, duration: 0.6, ease: 'steps(4)' })
@@ -326,11 +326,11 @@ function liveUI() {
 //  SCROLL ANIMATIONS
 // ═══════════════════════════════════════════════════════════
 function initAnimations() {
-  // — видимость WebGL: рендерим, только когда сцена на экране
+  // — видимость WebGL: рендерим, только когда коридор на экране
   const vis = { hero: true, descent: false }
   const syncGL = () => {
     const on = vis.hero || vis.descent
-    space?.setActive(on)
+    corridor?.setActive(on)
     $('#gl').style.visibility = on ? 'visible' : 'hidden'
   }
   ScrollTrigger.create({ trigger: '#hero', start: 'top bottom', end: 'bottom top', onToggle: (s) => ((vis.hero = s.isActive), syncGL()) })
@@ -352,20 +352,20 @@ function initAnimations() {
     trigger: '#hero',
     start: 'top top',
     end: 'bottom top',
-    onUpdate: (s) => space?.setProgress(s.progress * 0.05),
+    onUpdate: (s) => corridor?.setProgress(s.progress * 0.05),
   })
 
   // — манифест: слова «загораются» по мере чтения
   const words = splitWords($('.manifesto'))
   if (!reduced) {
     gsap.to(words, {
-      color: '#d8f1fd',
+      color: '#e8e0d2',
       stagger: 0.1,
       ease: 'none',
       scrollTrigger: { trigger: '.manifesto', start: 'top 80%', end: 'bottom 45%', scrub: true },
     })
     gsap.to(words.filter((w) => w.classList.contains('accent')), {
-      color: '#bad3f7',
+      color: '#d8121f',
       scrollTrigger: { trigger: '.manifesto', start: 'bottom 50%', toggleActions: 'play none none reverse' },
     })
   }
@@ -416,7 +416,7 @@ function initAnimations() {
     scrollTrigger: { trigger: '.facts', start: 'top 85%' },
   })
 
-  // — пролёт сквозь сцену
+  // — спуск по коридору
   const depth = $('.descent-depth')
   ScrollTrigger.create({
     trigger: '#descent',
@@ -425,8 +425,8 @@ function initAnimations() {
     scrub: true,
     onUpdate: (s) => {
       const p = s.progress
-      space?.setProgress(0.05 + p * 0.95)
-      space?.setGlow(gsap.utils.clamp(0, 1, (p - 0.8) / 0.2) * 0.8)
+      corridor?.setProgress(0.05 + p * 0.95)
+      corridor?.setRed(gsap.utils.clamp(0, 1, (p - 0.82) / 0.18) * 0.9)
       depth.textContent = pad(Math.round(p * 240), 3)
       audio.setTension(p)
     },
@@ -913,7 +913,7 @@ window.scrollTo(0, 0)
 
 bindContent()
 initScroll()
-initSpace()
+initCorridor()
 initMenu()
 initModal()
 viewer.init()
@@ -925,6 +925,9 @@ liveUI()
 
 runLoader().then(() => {
   document.body.classList.remove('is-loading')
+  // браузер мог восстановить прокрутку при перезагрузке — начинаем с первого экрана
+  window.scrollTo(0, 0)
+  lenis.scrollTo(0, { immediate: true, force: true })
   heroIntro()
   initAnimations()
   lenis.start()
