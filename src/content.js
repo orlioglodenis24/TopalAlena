@@ -79,7 +79,6 @@ export const site = {
         '/img/works/hp-2.jpg',
         '/img/works/hp-3.jpg',
         '/img/works/hp-4.jpg',
-        '/img/works/hp-5.jpg',
       ],
       video: '/video/harry-potter.mp4',
       role: 'Концепт, моделинг, анимация, пост-продакшн',
