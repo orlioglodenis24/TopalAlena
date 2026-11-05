@@ -2,3 +2,9 @@ node_modules
 dist
 od-media
 .DS_Store
+
+# Исходники проектов заказчика (сырые файлы, не для репо)
+AlenaProj/
+
+# Временные постеры шоурила
+public/img/works/reel-poster-*s.jpg
