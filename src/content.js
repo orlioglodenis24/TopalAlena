@@ -100,6 +100,7 @@ export const site = {
         '/img/works/tlp-2.jpg',
         '/img/works/tlp-3.jpg',
         '/img/works/tlp-4.jpg',
+        '/img/works/tlp-5.jpg',
       ],
       video: '/video/little-prince.mp4',
       role: 'Моделинг, анимация, цветокоррекция',
