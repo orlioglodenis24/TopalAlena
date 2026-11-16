@@ -1312,7 +1312,7 @@ main {
 }
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
   gap: clamp(28px, 3vw, 48px) clamp(16px, 2vw, 32px);
 }
 .card {
@@ -1976,6 +1976,7 @@ main {
   max-width: 60ch;
   font-size: clamp(16px, 1.4vw, 20px);
   color: var(--soft);
+  white-space: pre-line;
 }
 .case-gallery {
   display: grid;
@@ -1992,7 +1993,7 @@ main {
 .case-shot video {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   transition: transform 0.8s var(--ease-out), filter 0.4s;
 }
