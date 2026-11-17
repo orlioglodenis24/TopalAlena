@@ -2178,9 +2178,113 @@ main {
   .hero-scroll {
     display: none;
   }
+
+  /* ── WORKS – мобильная адаптация ── */
+  .works-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: clamp(24px, 6vw, 40px);
+  }
+  .works-title {
+    font-size: clamp(36px, 12vw, 60px);
+  }
+  .works-filter {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .works-filter button {
+    padding: 8px 12px;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
   .works-grid {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
+  .card-media {
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+  }
+  .card-num,
+  .card-shots {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+  .card-meta {
+    padding-top: 12px;
+    gap: 4px 12px;
+  }
+  .card-title {
+    font-size: clamp(15px, 4.5vw, 20px);
+  }
+  .card-year,
+  .card-cat {
+    font-size: 11px;
+  }
+  .works-end {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .works-end p {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+
+  /* ── CASE (модальное окно) – мобильная адаптация ── */
+  .case-inner {
+    padding: 20px 16px 48px;
+  }
+  .case-title {
+    font-size: clamp(26px, 8vw, 44px);
+    margin: 8px 0 20px;
+  }
+  .case-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+  .case-meta div {
+    padding: 12px 10px 12px 0;
+  }
+  .case-meta dt {
+    font-size: 10px;
+  }
+  .case-meta dd {
+    font-size: 13px;
+  }
+  .case-meta div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .case-desc {
+    font-size: clamp(14px, 4vw, 17px);
+    margin: 20px 0;
+    max-width: 100%;
+  }
+  .case-gallery {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .case-shot img,
+  .case-shot video {
+    aspect-ratio: 16 / 9;
+  }
+  .case-nav {
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 16px;
+  }
+  .case-nav button {
+    font-size: 11px;
+  }
+  .case-nav button strong {
+    font-size: clamp(14px, 4.5vw, 18px);
+  }
+  .case-nav button:last-child {
+    text-align: left;
+  }
+
+  /* ── VIEWER ── */
   .viewer {
     grid-template-columns: 1fr;
     padding: 56px 12px 64px;
@@ -2197,6 +2301,7 @@ main {
   .viewer-next {
     right: 16px;
   }
+
   .stack-card {
     min-height: 0;
     top: calc(10vh + var(--i) * 14px);
@@ -2210,16 +2315,6 @@ main {
   .footer-info {
     grid-column: 1 / -1;
   }
-  .case-meta {
-    grid-template-columns: 1fr 1fr;
-  }
-  .case-meta div:nth-child(3) {
-    padding-left: 0;
-    border-left: 0;
-  }
-  .case-gallery {
-    grid-template-columns: 1fr;
-  }
   .panel-rows {
     max-width: 100%;
   }
@@ -2231,6 +2326,36 @@ main {
   }
   .reel-caption {
     display: none;
+  }
+}
+
+/* ── WORKS – очень маленькие экраны (≤480px) ── */
+@media (max-width: 480px) {
+  .works-title {
+    font-size: clamp(32px, 11vw, 48px);
+  }
+  .works-filter button {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+  .card-media {
+    border-radius: 3px;
+  }
+  .case-meta {
+    grid-template-columns: 1fr;
+  }
+  .case-meta div + div {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .case-meta div:nth-child(3) {
+    border-top: 1px solid var(--line);
+  }
+  .case-title {
+    font-size: clamp(22px, 9vw, 36px);
+  }
+  .case-nav {
+    gap: 12px;
   }
 }
 
