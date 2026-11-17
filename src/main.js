@@ -648,7 +648,7 @@ function embed(url) {
 
 const isVideo = (src) => /\.(mp4|webm|mov)$/i.test(src)
 function media(src, attrs = '') {
-  return isVideo(src) ? `<video src="${src}" muted loop playsinline autoplay preload="metadata"></video>` : `<img src="${src}" alt="" ${attrs} />`
+  return isVideo(src) ? `<video src="${src}" muted loop playsinline preload="none" data-lazy-video></video>` : `<img src="${src}" alt="" ${attrs} />`
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -944,6 +944,33 @@ initFlashlight()
 initMisc()
 liveUI()
 
+// ── Lazy-load видео: воспроизводить только когда в viewport ──
+function initLazyVideos() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const v = entry.target
+      if (entry.isIntersecting) {
+        if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src }
+        v.play().catch(() => {})
+      } else {
+        v.pause()
+      }
+    })
+  }, { threshold: 0.1 })
+
+  document.querySelectorAll('video[data-lazy-video]').forEach(v => io.observe(v))
+
+  // Переподключаем Observer при открытии нового case (модалки)
+  const caseEl = document.getElementById('case')
+  if (caseEl) {
+    new MutationObserver(() => {
+      caseEl.querySelectorAll('video[data-lazy-video]').forEach(v => {
+        if (!v._lazyObserved) { v._lazyObserved = true; io.observe(v) }
+      })
+    }).observe(caseEl, { childList: true, subtree: true })
+  }
+}
+
 runLoader().then(() => {
   document.body.classList.remove('is-loading')
   // браузер мог восстановить прокрутку при перезагрузке — начинаем с первого экрана
@@ -951,6 +978,7 @@ runLoader().then(() => {
   lenis.scrollTo(0, { immediate: true, force: true })
   heroIntro()
   initAnimations()
+  initLazyVideos()
   lenis.start()
   requestAnimationFrame(() => ScrollTrigger.refresh())
 })
